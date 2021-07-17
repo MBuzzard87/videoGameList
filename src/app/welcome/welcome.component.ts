@@ -9,7 +9,7 @@ import { AppComponent } from '../app.component';
 })
 export class WelcomeComponent implements OnInit {
 
-  name = this.route.snapshot.params['name']
+  name = ''
 
 
 
@@ -17,7 +17,7 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {
   
-    console.log(this.route.snapshot.params['name'])
+    this.name = this.route.snapshot.params['name']
   }
 
 }
