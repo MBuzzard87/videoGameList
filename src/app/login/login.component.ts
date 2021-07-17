@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,15 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
 
-  username = "Buzzywuzzy87";
-  password = "";
-
+  username = ""
+  password = ""
+  errorMessage = "Invalid Credentials"
+  invalidLogin = false
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
   handleLogin() {
-    console.log(this.username)
+    // console.log(this.username)
+    // console.log(this.password)
+    if (this.username === "Buzzywuzzy87" && this.password === "buzzJawn") {
+      this.invalidLogin = false
+    } else {
+      this.invalidLogin = true
+    }
   }
 }
