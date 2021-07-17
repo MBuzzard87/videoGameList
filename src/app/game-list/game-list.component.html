@@ -2,14 +2,16 @@
     <caption>My Game List</caption>
     <thead>
         <tr>
-            <th>id</th>
             <th>Game Name</th>
+            <th>Console</th>
+            <th>Complete?</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>{{game.id}}</td>
+        <tr *ngFor="let game of games ">
             <td>{{game.name}}</td>
+            <td>{{game.console}}</td>
+            <td>{{game.done}}</td>
         </tr>
     </tbody>
 </table>

@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+export class Game {
+  constructor(
+    public id: number,
+    public name: string,
+    public console: string,
+    public done: boolean
+  ) {}
+}
+
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
@@ -7,10 +16,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameListComponent implements OnInit {
 
-  game = {
-    id : 1,
-    name: "Little Samson"
-  }
+
+  games = [
+    new Game(1, "Little Samson", "NES", true),
+    new Game(2, "Super Castlevania IV", "SNES", true),
+    new Game(3, "Crusader of Centy", "Sega Genesis", false)
+    
+  ]
+
 
   constructor() { }
 
