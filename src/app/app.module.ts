@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorComponent } from './error/error.component';
 import { GameListComponent } from './game-list/game-list.component';
+import { MenuComponent } from './menu/menu.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { GameListComponent } from './game-list/game-list.component';
     WelcomeComponent,
     LoginComponent,
     ErrorComponent,
-    GameListComponent
+    GameListComponent,
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

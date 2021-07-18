@@ -1,17 +1,19 @@
-<table border="1">
-    <caption>My Game List</caption>
-    <thead>
-        <tr>
-            <th>Game Name</th>
-            <th>Console</th>
-            <th>Complete?</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let game of games ">
-            <td>{{game.name}}</td>
-            <td>{{game.console}}</td>
-            <td>{{game.done}}</td>
-        </tr>
-    </tbody>
-</table>
+<h1>My Game List</h1>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Game Name</th>
+                <th>Console</th>
+                <th>Complete?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let game of games ">
+                <td>{{game.name}}</td>
+                <td>{{game.console | uppercase}}</td>
+                <td>{{game.done}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
