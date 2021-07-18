@@ -1,4 +1,15 @@
 <h1>Welcome!!!</h1>
-<div>
+<div class="container">
     {{name}}!!!  Time to check off your gaming list!!!  You can manage your Game List <a routerLink="/games">here</a>
+</div>
+
+<div class="container">
+    Click here for a custom welcome message
+    <button (click)="getWelcomeMessage()" class="btn btn-success">Welcome Message</button>
+</div>
+
+<div class="container" *ngIf="welcomeMessageFromService">
+    <h2>Your custom message</h2>
+    {{welcomeMessageFromService}}
+    
 </div>
