@@ -5,11 +5,12 @@
 
 <div class="container">
     Click here for a custom welcome message
-    <button (click)="getWelcomeMessage()" class="btn btn-success">Welcome Message</button>
+    <button (click)="getWelcomeMessageWithParameter()" class="btn btn-success">Welcome Message</button>
 </div>
 
 <div class="container" *ngIf="welcomeMessageFromService">
     <h2>Your custom message</h2>
     {{welcomeMessageFromService}}
+    
     
 </div>
