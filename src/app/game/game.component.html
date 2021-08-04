@@ -4,11 +4,11 @@
 
     <fieldset class="form-group">
         <label>Game</label>
-        <input type="text" [{ngModel}]="game.description" class="form-control" name="description" required="required">
+        <input type="text" [(ngModel)]="game.name" class="form-control" name="description" required="required">
     </fieldset>
     <fieldset class="form-group">
         <label>Console</label>
-        <select [{ngModel}]="game.console" class="form-control" id="sel1">
+        <select class="form-control" [(ngModel)]="game.console" id="console">
             <option value="NES">Nintendo</option>  
             <option value="Genesis">Sega Genesis</option> 
             <option value="SNES">Super Nintendo</option>              
@@ -27,6 +27,13 @@
             <option value="PS5">Playstation 5</option>  
             <option value="Series X">Xbox Series X</option>                 
           </select>
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Complete?</label>
+        <select class="form-control" [(ngModel)]="game.done" id="complete">
+            <option value=TRUE>Yes</option>  
+            <option value=FALSE>No</option>  
+        </select>
     </fieldset>
 
     <button class="btn btn-success" >Save</button>

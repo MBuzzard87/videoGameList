@@ -12,15 +12,23 @@ export class GameDataService {
 
 
   retrieveAllGames(username) {
-    return this.http.get<Game[]>(`http://localhost:8080/user/${username}/games`)
+    return this.http.get<Game[]>(`http://localhost:8080/${username}/games`)
   }
 
   deleteGame(username, id) {
-    return this.http.delete(`http://localhost:8080/user/${username}/games/${id}`)
+    return this.http.delete(`http://localhost:8080/${username}/games/${id}`)
   }
 
   retrieveGame(username, id) {
-    return this.http.get<Game>(`http://localhost:8080/user/${username}/games/${id}`)
+    return this.http.get<Game>(`http://localhost:8080/${username}/games/${id}`)
+  }
+
+  updateGame(username,id,game) {
+    return this.http.put(`http://localhost:8080/${username}/games/${id}`, game)
+  }
+
+  createGame(username,game) {
+    return this.http.post(`http://localhost:8080/${username}/games`, game)
   }
 
 }
