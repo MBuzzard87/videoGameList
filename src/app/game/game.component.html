@@ -1,0 +1,33 @@
+<h1 style="text-align: center; font-size: 60px;">Game</h1>
+
+<div class="container">
+
+    <fieldset class="form-group">
+        <label>Game</label>
+        <input type="text" [{ngModel}]="game.description" class="form-control" name="description" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Console</label>
+        <select [{ngModel}]="game.console" class="form-control" id="sel1">
+            <option value="NES">Nintendo</option>  
+            <option value="Genesis">Sega Genesis</option> 
+            <option value="SNES">Super Nintendo</option>              
+            <option value="Saturn">Sega Saturn</option>  
+            <option value="N64">Nintendo 64</option> 
+            <option value="Dreamcast">Dreamcast</option>  
+            <option value="PS2">Playstation 2</option>  
+            <option value="Xbox">Xbox</option> 
+            <option value="PS3">Playstation 3</option>   
+            <option value="Wii">Nintendo Wii</option>  
+            <option value="360">Xbox 360</option> 
+            <option value="Wii U">Wii U</option>  
+            <option value="PS4">Playstation 4</option>  
+            <option value="Xbox One">Xbox One</option> 
+            <option value="Switch">Nintendo Switch</option>  
+            <option value="PS5">Playstation 5</option>  
+            <option value="Series X">Xbox Series X</option>                 
+          </select>
+    </fieldset>
+
+    <button class="btn btn-success" >Save</button>
+</div>
