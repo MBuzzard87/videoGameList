@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Optional } from '@angular/core';
+import { Injectable} from '@angular/core';
+import { Observable } from 'rxjs';
 import { Game } from 'src/app/game-list/game-list.component';
 
 @Injectable({
@@ -11,8 +12,8 @@ export class GameDataService {
 
 
 
-  retrieveAllGames(username) {
-    return this.http.get<Game[]>(`http://localhost:8080/${username}/games`)
+  retrieveAllGames(username): Observable<any> {
+    return this.http.get(`http://localhost:8080/${username}/games/`);
   }
 
   deleteGame(username, id) {

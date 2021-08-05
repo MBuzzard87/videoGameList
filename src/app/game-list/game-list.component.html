@@ -14,9 +14,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let game of games ">
-                <td>{{game.name}}</td>
+                <td>{{game.name | uppercase}}</td>
                 <td>{{game.console | uppercase}}</td>
-                <td>{{game.done}}</td>
+                <td>{{game.isComplete | uppercase}}</td>
                 <td><button (click)="updateGame(game.id)" class="btn btn-success">Update</button></td>
                 <td><button (click)="deleteGame(game.id)" class="btn btn-warning">Delete</button></td>
             </tr>

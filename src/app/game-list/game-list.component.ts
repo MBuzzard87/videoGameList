@@ -7,7 +7,7 @@ export class Game {
     public id: number,
     public name: string,
     public console: string,
-    public done: boolean
+    public isComplete: string
   ) {}
 }
 
@@ -20,12 +20,12 @@ export class GameListComponent implements OnInit {
 
   message : string
 
-  games: Game[]
+  games: Game[];
   // = 
   // [
-  //   new Game(1, "Little Samson", "NES", true),
-  //   new Game(2, "Super Castlevania IV", "SNES", true),
-  //   new Game(3, "Crusader of Centy", "Sega Genesis", false)
+  //   new Game(1, "Little Samson", "NES", "Yes"),
+  //   new Game(2, "Super Castlevania IV", "SNES", "Yes"),
+  //   new Game(3, "Crusader of Centy", "Sega Genesis", "Yes")
     
   // ]
 
@@ -34,14 +34,14 @@ export class GameListComponent implements OnInit {
     private router : Router) { }
 
   ngOnInit() {
-    this.refreshGameList;
+    this.refreshGameList();
   }
 
   refreshGameList() {
-    this.gameService.retrieveAllGames(`Buzzywuzzy87`).subscribe(
+    this.gameService.retrieveAllGames('Buzzywuzzy87').subscribe(
       response => {
-        console.log(response);
         this.games = response;
+        console.log(response);
       }
     )
   }
