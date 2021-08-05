@@ -12,8 +12,8 @@
                 <th>Delete</th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let game of games ">
+        <tbody >
+            <tr *ngFor="let game of games " >
                 <td>{{game.name | uppercase}}</td>
                 <td>{{game.console | uppercase}}</td>
                 <td>{{game.isComplete | uppercase}}</td>
@@ -22,5 +22,9 @@
             </tr>
         </tbody>
     </table>
-    <button class="btn btn-dark">Add Game</button>
+    
+    
+</div>
+<div class="row">
+    <button class="btn btn-dark" (click)="addGame()">Add Game</button>
 </div>

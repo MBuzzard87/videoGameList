@@ -13,7 +13,7 @@ export class GameDataService {
 
 
   retrieveAllGames(username): Observable<any> {
-    return this.http.get(`http://localhost:8080/${username}/games/`);
+    return this.http.get(`http://localhost:8080/${username}/games`);
   }
 
   deleteGame(username, id) {
@@ -28,8 +28,8 @@ export class GameDataService {
     return this.http.put(`http://localhost:8080/${username}/games/${id}`, game)
   }
 
-  createGame(username,game) {
-    return this.http.post(`http://localhost:8080/${username}/games`, game)
+  createGame(username, game) {
+    return this.http.post(`http://localhost:8080/${username}/createGame`, game)
   }
 
 }

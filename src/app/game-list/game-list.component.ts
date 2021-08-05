@@ -50,14 +50,18 @@ export class GameListComponent implements OnInit {
     this.gameService.deleteGame('Buzzywuzzy87', id).subscribe(
       response => {
         console.log(response);
-        this.refreshGameList;
-        this.message = `Delete of Game #${id} successful`;
+        this.refreshGameList();
+        this.message = `Game #${id} deleted successfully`;
       }
     )
   }
 
   updateGame(id) {
     this.router.navigate(["games", id])
+  }
+
+  addGame() {
+    this.router.navigate(["games", -1])
   }
 
 }

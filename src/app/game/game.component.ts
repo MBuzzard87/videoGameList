@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from '../game-list/game-list.component';
 import { GameDataService } from '../service/data/game-data.service';
 
@@ -15,15 +15,38 @@ export class GameComponent implements OnInit {
 
   constructor(
     private gameService : GameDataService,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.game = new Game(1,'','','');
-    this.gameService.retrieveGame("Buzzywuzzy87", this.id).subscribe (
-      data => this.game = data
-    )
+    this.game = new Game(this.id,'','','');
+    if(this.id != -1) {
+      this.gameService.retrieveGame("Buzzywuzzy87", this.id).subscribe (
+        data => this.game = data
+      )
+    }
+    
+  }
+
+  saveGame() {
+
+    if(this.id == -1) {
+      this.gameService.createGame('Buzzywuzzy87', this.game).subscribe(
+        data => {
+          this.router.navigate(['games'])
+        }
+      )
+      
+    } else {
+      this.gameService.updateGame('Buzzywuzzy87', this.id, this.game).subscribe(
+        data => {
+          this.router.navigate(['games'])
+        }
+      )
+    }
+    
   }
 
 }
