@@ -18,9 +18,9 @@ export class GameComponent implements OnInit {
     private route : ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.game = new Game(1,'','',false);
+    this.game = new Game(1,'','','');
     this.gameService.retrieveGame("Buzzywuzzy87", this.id).subscribe (
       data => this.game = data
     )
