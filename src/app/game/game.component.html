@@ -33,12 +33,12 @@
         </fieldset>
         <fieldset class="form-group">
             <label>Complete?</label>
-            <select class="form-control" name="complete" [(ngModel)]="game.isComplete" required="required">
-                <option value="Yes">Yes</option>  
-                <option value="No">No</option>  
+            <select class="form-control" name="complete" [(ngModel)]="game.status" required="required">
+                <option value="Complete">Complete</option>  
+                <option value="Not Complete">Not Complete</option>  
             </select>
         </fieldset>
-        <button type="submit" class="btn btn-success" >Save</button>
+        <button type="submit" class="btn btn-success">Save</button>
     </form>
 </div>
 

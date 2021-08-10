@@ -35,6 +35,7 @@ export class GameComponent implements OnInit {
     if(this.id == -1) {
       this.gameService.createGame('Buzzywuzzy87', this.game).subscribe(
         data => {
+          alert(`${this.game.name} Successfully Added`)
           this.router.navigate(['games'])
         }
       )

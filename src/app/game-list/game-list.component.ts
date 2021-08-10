@@ -1,13 +1,17 @@
+import { convertUpdateArguments } from '@angular/compiler/src/compiler_util/expression_converter';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { GameDataService } from '../service/data/game-data.service';
+
+
 
 export class Game {
   constructor(
     public id: number,
     public name: string,
     public console: string,
-    public isComplete: string
+    public status: string
   ) {}
 }
 
@@ -20,14 +24,16 @@ export class GameListComponent implements OnInit {
 
   message : string
 
-  games: Game[];
-  // = 
-  // [
-  //   new Game(1, "Little Samson", "NES", "Yes"),
-  //   new Game(2, "Super Castlevania IV", "SNES", "Yes"),
-  //   new Game(3, "Crusader of Centy", "Sega Genesis", "Yes")
+  columnDefs = [
+    { headerName: "Title", field: 'name', sortable: true, filter: true, resizable:true},
+    { field: 'console', sortable: true, filter: true, resizable:true },
+    { field: 'status', sortable: true, filter: true, resizable:true },
+    { headerName: "Update", suppressCellFlash:true, cellRenderer: (params) => {return `<div><button class="btn btn-info" onClick="updateGame(${params.id})">Update</button></div>`}},
+    { headerName: "Delete", suppressCellFlash:true, cellRenderer: (params) => {return `<div><button class="btn btn-danger" onClick="deleteGame(${params.id})">Delete</button></div>`}},
     
-  // ]
+];
+
+rowData: [Observable<any[]>];
 
 
   constructor(private gameService : GameDataService,
@@ -40,7 +46,7 @@ export class GameListComponent implements OnInit {
   refreshGameList() {
     this.gameService.retrieveAllGames('Buzzywuzzy87').subscribe(
       response => {
-        this.games = response;
+        this.rowData = response;
         console.log(response);
       }
     )
@@ -51,12 +57,14 @@ export class GameListComponent implements OnInit {
       response => {
         console.log(response);
         this.refreshGameList();
-        this.message = `Game #${id} deleted successfully`;
+        this.message = `${Game.name} deleted successfully`;
       }
     )
   }
 
+
   updateGame(id) {
+    console.log("yooooo");
     this.router.navigate(["games", id])
   }
 

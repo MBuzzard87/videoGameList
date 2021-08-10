@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Directive, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -9,10 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorComponent } from './error/error.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { MenuComponent } from './menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GameComponent } from './game/game.component';
+import { AgGridModule } from 'ag-grid-angular';
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,15 +25,15 @@ import { GameComponent } from './game/game.component';
     ErrorComponent,
     GameListComponent,
     MenuComponent,
-    FooterComponent,
     LogoutComponent,
-    GameComponent
+    GameComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
