@@ -12,20 +12,31 @@
 <div class="alert alert-warning" *ngIf="selectMsg">{{selectMsg}} <a routerLink="/games" (click)="clearMsg()" style="float: right; font-size: 18px; font-weight: 900; color: black;">X</a></div>
 
 <ag-grid-angular
-    #myGrid
+#myGrid
+
     style="width: 1120px; height: 520px;"
     class="ag-theme-alpine-dark"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
     animateRows=true
     rowSelection="single"
-    (rowSelected)="onRowSelect($event)"
+    groupSelectsFiltered=true
+    (gridReady)="onGridReady($event)"
+    [gridOptions]=gridOptions
+    
 > 
 
 </ag-grid-angular>
 
+
+<h3 style="text-align: center;"> Current Game Selected: <span style="font-weight: 700; font-size: 40px; ">{{currentName}}</span> </h3>
+
     <button style="margin: 20px 25px; width: 500px; height: 60px" class="btn btn-info" (click)='updateGame()'>Update</button>
     <button style="margin: 20px 25px; width: 500px; height: 60px" class="btn btn-danger" (click)='deleteGame()'>Delete</button>
-    <button style="margin: 0 150px; width: 800px; height: 60px;" class="btn btn-success" (click)="addGame()">Add Game</button>
+    <button style="margin: 20px 25px; width: 500px; height: 60px" class="btn btn-primary" >View Notes</button>
+    <button style="margin: 20px 25px; width: 500px; height: 60px" class="btn btn-success" (click)="addGame()">Add Game</button>
+
+
 </div>
+
 

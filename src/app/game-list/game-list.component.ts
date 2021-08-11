@@ -1,4 +1,3 @@
-import { unescapeIdentifier } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -25,6 +24,10 @@ export class GameListComponent implements OnInit {
   selectMsg: string
   message : string
   private currentRow;
+  currentName = "N/A";
+  private gridApi;
+  private gridColumnApi;
+  
 
   
 
@@ -40,6 +43,9 @@ export class GameListComponent implements OnInit {
 /////////////////   AG-GRID   /////////////////////////
 
 
+
+
+
 columnDefs = [
   { headerName: "Title", width: 498, field: 'name', sortable: true, filter: true, floatingFilter: true},
   { field: 'console', width: 200, sortable: true, filter: true},
@@ -51,9 +57,17 @@ columnDefs = [
 rowData: [Observable<any[]>];
 
 
-  onRowSelect(event) {
-    // handle event.data which is the object with the selected row data
-  this.currentRow = event.data
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+  }
+
+  gridOptions = {
+    onRowClicked: event => {
+      this.currentRow = event.data;
+      this.currentName = this.currentRow.name;
+      
+      console.log(event.data)}
   }
 
 ///////////////////    Clear Message    /////////////////////////////
@@ -85,6 +99,7 @@ clearMsg() {
           this.refreshGameList();
           this.message = `${this.currentRow.name} successfully deleted`;
           this.currentRow=undefined;
+          this.currentName = "N/A"
         }
       )
     } else {
@@ -106,8 +121,5 @@ clearMsg() {
   addGame() {
     this.router.navigate(["games", -1])
   }
-
-
- 
 
 }
