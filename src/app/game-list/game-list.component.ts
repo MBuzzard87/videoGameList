@@ -25,10 +25,8 @@ export class GameListComponent implements OnInit {
   selectMsg: string
   message : string
   private currentRow;
-  private icon;
+
   
-
-
 
 
   constructor(private gameService : GameDataService,
@@ -43,11 +41,10 @@ export class GameListComponent implements OnInit {
 
 
 columnDefs = [
-  { headerName: "Title", width: 498, field: 'name', sortable: true, filter: true},
-  { field: 'console', width: 200, sortable: true, filter: true},
-  { field: 'status', cellStyle: params => params.data.status == "Complete" ? { color: 'green' } : { color: 'red' }, width: 200, sortable: true, filter: true},
-  { headerName: "Rating", width: 200}
-  
+  { headerName: "Title", width: 498, field: 'name', sortable: true, filter: true, floatingFilter: true},
+  { field: 'console', width: 200, sortable: true},
+  { headerName: "Notes", width: 200},
+  { field: 'status', cellStyle: params => params.data.status == "Complete" ? { backgroundColor: '#478952' } : { backgroundColor: '#D54343' }, width: 200, sortable: true},
 ];
 
 
@@ -59,12 +56,9 @@ rowData: [Observable<any[]>];
   this.currentRow = event.data
   }
 
-
-  validationStatusRenderer(params) {
-    let tick = `<i class="fa fa-check" aria-hidden="true"></i>`;
-    let cross = `<i class="fa fa-times" aria-hidden="true"></i> `;
-    this.icon = params.value.lastValidation === "Complete" ? tick : cross;
-    
+  consoleValueFormatter(params) {
+    var value = params.console;
+    return value;
   }
 
 

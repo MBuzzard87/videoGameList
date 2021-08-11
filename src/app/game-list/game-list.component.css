@@ -1,9 +1,0 @@
-.ag-theme-alpine .ag-icon-pin {
-    font-family: "Font Awesome 5 Free";
-    /* FontAwesome uses font-weight bold */
-    font-weight: bold;
- }
- 
- .ag-theme-alpine .ag-icon-pin::before {
-    content: '\\f08d';
- }
