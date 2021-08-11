@@ -1,82 +1,15 @@
-
-<!--         
-    
-<br>
-<label>Title Order:</label>
-<select  name="console" required="required">
-    <option value="NES">Most Recently Added</option>  
-    <option value="Genesis">Least Recently Added</option> 
-    <option value="SNES">0-9 A-Z</option>              
-    <option value="Saturn">9-0 Z-A</option>               
-</select>
-<label>Console:</label>
-<select  name="console" required="required">
-    <option value="All">All</option>  
-    <option value="NES">Nintendo</option>  
-    <option value="Genesis">Sega Genesis</option> 
-    <option value="SNES">Super Nintendo</option>              
-    <option value="Saturn">Sega Saturn</option>  
-    <option value="PS1">Playstation 1</option>  
-    <option value="N64">Nintendo 64</option> 
-    <option value="Dreamcast">Dreamcast</option>  
-    <option value="PS2">Playstation 2</option>  
-    <option value="Xbox">Xbox</option> 
-    <option value="PS3">Playstation 3</option>   
-    <option value="Wii">Nintendo Wii</option>  
-    <option value="360">Xbox 360</option> 
-    <option value="Wii U">Wii U</option>  
-    <option value="PS4">Playstation 4</option>  
-    <option value="Xbox One">Xbox One</option> 
-    <option value="Switch">Nintendo Switch</option>  
-    <option value="PS5">Playstation 5</option>  
-    <option value="Series X">Xbox Series X</option>                 
-</select>
-<label>Status:</label>
-<select  name="console" required="required">
-    <option value="NES">All</option>  
-    <option value="Genesis">Complete</option> 
-    <option value="SNES">Not Complete</option>                         
-</select>
-<button type="submit" class="btn btn-success">Search</button>
-
-
-
-<div class="container">
-    
-    <table class="table">
-        
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Console</th>
-                <th>Complete?</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody >
-            <tr *ngFor="let game of games " >
-                <td>{{game.name | uppercase}}</td>
-                <td>{{game.console | uppercase}}</td>
-                <td>{{game.isComplete | uppercase}}</td>
-                <td><button (click)="updateGame(game.id)" class="btn btn-success">Update</button></td>
-                <td><button (click)="deleteGame(game.id)" class="btn btn-warning">Delete</button></td>
-            </tr>
-        </tbody>
-    </table>
-    
-    
-</div> -->
 <link
   rel="stylesheet"
   href="https://unpkg.com/@ag-grid-community/all-modules@25.3.0/dist/styles/ag-grid.css" />
   <link
   rel="stylesheet"
   href="https://unpkg.com/@ag-grid-community/all-modules@25.3.0/dist/styles/ag-theme-alpine-dark.css" />
+
+
 <div style="width: 1100px; margin: auto;"><h1 style="text-align: center; font-size: 50px; margin: 3%;">My Game List</h1>
   
-<div class="alert alert-success" *ngIf="message">{{message}}</div>
-<div class="alert alert-warning" *ngIf="selectMsg">{{selectMsg}}</div>
+<div class="alert alert-success" *ngIf="message">{{message}} <a routerLink="/games" (click)="clearMsg()" style="float: right; font-size: 18px; font-weight: 900; color: black;">X</a></div>
+<div class="alert alert-warning" *ngIf="selectMsg">{{selectMsg}} <a routerLink="/games" (click)="clearMsg()" style="float: right; font-size: 18px; font-weight: 900; color: black;">X</a></div>
 
 <ag-grid-angular
     #myGrid
@@ -86,21 +19,13 @@
     [columnDefs]="columnDefs"
     animateRows=true
     rowSelection="single"
-    
-    (onGridReady)="onGridReady($event)"
     (rowSelected)="onRowSelect($event)"
->
+> 
 
 </ag-grid-angular>
 
-
-
-
     <button style="margin: 20px 25px; width: 500px; height: 60px" class="btn btn-info" (click)='updateGame()'>Update Game</button>
     <button style="margin: 20px 25px; width: 500px; height: 60px" class="btn btn-danger" (click)='deleteGame()'>Delete Game</button>
-
-
-
     <button style="margin: 0 150px; width: 800px; height: 60px;" class="btn btn-success" (click)="addGame()">Add Game</button>
 </div>
 
