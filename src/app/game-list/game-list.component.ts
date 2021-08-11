@@ -42,7 +42,7 @@ export class GameListComponent implements OnInit {
 
 columnDefs = [
   { headerName: "Title", width: 498, field: 'name', sortable: true, filter: true, floatingFilter: true},
-  { field: 'console', width: 200, sortable: true},
+  { field: 'console', width: 200, sortable: true, filter: true},
   { headerName: "Notes", width: 200},
   { field: 'status', cellStyle: params => params.data.status == "Complete" ? { backgroundColor: '#478952' } : { backgroundColor: '#D54343' }, width: 200, sortable: true},
 ];
@@ -55,12 +55,6 @@ rowData: [Observable<any[]>];
     // handle event.data which is the object with the selected row data
   this.currentRow = event.data
   }
-
-  consoleValueFormatter(params) {
-    var value = params.console;
-    return value;
-  }
-
 
 ///////////////////    Clear Message    /////////////////////////////
 
