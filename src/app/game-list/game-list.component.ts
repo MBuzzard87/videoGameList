@@ -25,10 +25,9 @@ export class GameListComponent implements OnInit {
 
   columnDefs = [
     { headerName: "Title", field: 'name', sortable: true, filter: true, resizable:true},
-    { field: 'console', sortable: true, filter: true, resizable:true },
-    { field: 'status', sortable: true, filter: true, resizable:true },
-    { headerName: "Update", suppressCellFlash:true, cellRenderer: (params) => {return `<div><button class="btn btn-info" onClick="updateGame(${params.id})">Update</button></div>`}},
-    { headerName: "Delete", suppressCellFlash:true, cellRenderer: (params) => {return `<div><button class="btn btn-danger" onClick="deleteGame(${params.id})">Delete</button></div>`}},
+    { field: 'console', sortable: true, filter: true},
+    { field: 'status', sortable: true, filter: true},
+    { headerName: "Notes", suppressCellFlash:true, cellRenderer: () => {return `<div><button class="btn btn-primary">View Notes</button></div>`}},
     
 ];
 

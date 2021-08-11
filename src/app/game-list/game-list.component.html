@@ -75,17 +75,24 @@
   href="https://unpkg.com/@ag-grid-community/all-modules@25.3.0/dist/styles/ag-theme-alpine-dark.css" />
 
 <div class="alert alert-success" *ngIf="message">{{message}}</div>
+
 <ag-grid-angular
     style="width: 100%; height: 100%;"
     class="ag-theme-alpine-dark"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
+    animateRows=true
     
 >
 
 </ag-grid-angular>
 
-<div style="margin: 3% 25%;">
-    <button style="width: 100%; height: 60px" class="btn btn-success" (click)="addGame()">Add Game</button>
+<div style="margin-top: 1%">
+    <button style="margin: 1%; width: 48%; height: 60px" class="btn btn-info" >Update Game</button>
+    <button style="margin: 1%; width: 48%; height: 60px" class="btn btn-danger">Delete Game</button>
+</div>
+
+<div style="margin: 2% 10%;">
+    <button style="width: 100%; height: 60px;" class="btn btn-success" (click)="addGame()">Add Game</button>
 </div>
 
