@@ -43,6 +43,7 @@ export class GameComponent implements OnInit {
     } else {
       this.gameService.updateGame('Buzzywuzzy87', this.id, this.game).subscribe(
         data => {
+          alert(`${this.game.name} Successfully Updated`)
           this.router.navigate(['games'])
         }
       )

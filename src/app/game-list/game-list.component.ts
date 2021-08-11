@@ -21,15 +21,21 @@ export class Game {
 })
 export class GameListComponent implements OnInit {
 
+  selectMsg: string
   message : string
+  private gridApi;
+  private gridColumnApi;
+  private currentRow;
+  
 
   columnDefs = [
-    { headerName: "Title", field: 'name', sortable: true, filter: true, resizable:true},
-    { field: 'console', sortable: true, filter: true},
-    { field: 'status', sortable: true, filter: true},
-    { headerName: "Notes", suppressCellFlash:true, cellRenderer: () => {return `<div><button class="btn btn-primary">View Notes</button></div>`}},
+    { headerName: "Title", width: 498, field: 'name', sortable: true, filter: true},
+    { field: 'console', width: 200, sortable: true, filter: true},
+    { field: 'status', width: 200, sortable: true, filter: true},
+    { headerName: "Rating", width: 200}
     
 ];
+
 
 rowData: [Observable<any[]>];
 
@@ -39,35 +45,61 @@ rowData: [Observable<any[]>];
 
   ngOnInit() {
     this.refreshGameList();
+    
   }
 
+  onGridReady = (params) => {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+}
+
+onRowSelect(event) {
+  this.currentRow = event.data
+  
+  // handle event.data which is the object with the selected row data
+}
   refreshGameList() {
     this.gameService.retrieveAllGames('Buzzywuzzy87').subscribe(
       response => {
         this.rowData = response;
         console.log(response);
+        
       }
     )
+    
+    
   }
 
-  deleteGame(id) {
-    this.gameService.deleteGame('Buzzywuzzy87', id).subscribe(
-      response => {
-        console.log(response);
-        this.refreshGameList();
-        this.message = `${Game.name} deleted successfully`;
-      }
-    )
+  deleteGame() {
+    if(this.currentRow != undefined) {
+      this.gameService.deleteGame('Buzzywuzzy87', this.currentRow.id).subscribe(
+        response => {
+          console.log(response);
+          this.refreshGameList();
+          this.message = `${this.currentRow.name} successfully deleted`;
+        }
+      )
+
+    } else {
+      this.selectMsg = "Please select a game to delete";
+    }
+        
   }
 
 
-  updateGame(id) {
-    console.log("yooooo");
-    this.router.navigate(["games", id])
+  updateGame() {
+    if(this.currentRow != undefined) {
+      this.router.navigate(["games", this.currentRow.id])
+     } else {
+       this.selectMsg = "Please select a game to update"
+     }
   }
 
   addGame() {
     this.router.navigate(["games", -1])
   }
+
+
+ 
 
 }
