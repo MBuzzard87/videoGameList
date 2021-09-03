@@ -66,7 +66,7 @@ rowData: [Observable<any[]>];
       this.currentRow = event.data;
       this.currentName = this.currentRow.name;
       
-      console.log(event.data)}
+    }
   }
 
 ///////////////////    Clear Message    /////////////////////////////
@@ -81,9 +81,7 @@ clearMsg() {
   refreshGameList() {
     this.gameService.retrieveAllGames('Buzzywuzzy87').subscribe(
       response => {
-        this.rowData = response;
-        console.log(response);
-        
+        this.rowData = response;        
       }
     )
     
@@ -94,7 +92,6 @@ clearMsg() {
     if(this.currentRow != undefined) {
       this.gameService.deleteGame('Buzzywuzzy87', this.currentRow.id).subscribe(
         response => {
-          console.log(response);
           this.refreshGameList();
           this.message = `${this.currentRow.name} successfully deleted`;
           this.currentRow=undefined;

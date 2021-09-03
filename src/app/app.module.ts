@@ -9,9 +9,10 @@ import { ErrorComponent } from './error/error.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GameComponent } from './game/game.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor-basic-auth.service';
 
 
 
@@ -33,7 +34,9 @@ import { AgGridModule } from 'ag-grid-angular';
     HttpClientModule,
     AgGridModule.withComponents([]),
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorBasicAuthService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

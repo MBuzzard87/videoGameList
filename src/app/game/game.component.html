@@ -1,6 +1,8 @@
 <h1 style="text-align: center; font-size: 60px;">Game</h1>
 
 <div class="container">
+
+    
     <div class="alert alert-warning" *ngIf="gameForm.invalid">Complete all fields</div>
 
     <form (ngSubmit)="!gameForm.invalid && saveGame()" #gameForm="ngForm">
@@ -39,7 +41,9 @@
             </select>
         </fieldset>
         <button type="submit" class="btn btn-success">Save</button>
+        
     </form>
+    <button routerLink="/games" class="btn btn-info">Cancel</button>
 </div>
 
     
