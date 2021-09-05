@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
+import { API_URL } from 'src/app/app.constants';
 import { Game } from 'src/app/game-list/game-list.component';
 
 @Injectable({
@@ -13,23 +14,23 @@ export class GameDataService {
 
 
   retrieveAllGames(username): Observable<any> {
-    return this.http.get(`http://localhost:8080/${username}/games`);
+    return this.http.get(`${API_URL}/${username}/games`);
   }
 
   deleteGame(username, id) {
-    return this.http.delete(`http://localhost:8080/${username}/games/${id}`)
+    return this.http.delete(`${API_URL}/${username}/games/${id}`)
   }
 
   retrieveGame(username, id) {
-    return this.http.get<Game>(`http://localhost:8080/${username}/games/${id}`)
+    return this.http.get<Game>(`${API_URL}/${username}/games/${id}`)
   }
 
   updateGame(username,id,game) {
-    return this.http.put(`http://localhost:8080/${username}/games/${id}`, game)
+    return this.http.put(`${API_URL}/${username}/games/${id}`, game)
   }
 
   createGame(username, game) {
-    return this.http.post(`http://localhost:8080/${username}/createGame`, game)
+    return this.http.post(`${API_URL}/${username}/createGame`, game)
   }
 
 }

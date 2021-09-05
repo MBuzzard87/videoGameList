@@ -1,11 +1,16 @@
-<h1>Login</h1>
+<div class="loginScreen"><div class="conker" >
+    <h1>Login</h1>
+    
+</div>
+
+
 
 <div class="container">
     <div class="alert alert-warning" *ngIf="invalidLogin">{{errorMessage}}</div>
 <div>
-User Name : <input type="text" name="username" [(ngModel)] = "username">
-Password : <input type="password" name="password" [(ngModel)] = "password">
+<span>User Name : </span> <input type="text" name="username" [(ngModel)] = "username">
+<span> Password : </span><input type="password" name="password" [(ngModel)] = "password"> <br>
 
-<button (click)=handleLogin() class="btn btn-success">Login</button>
+<button (click)=handleJWTAuthLogin() class="btn btn-dark">Login</button>
 </div>
-</div>
+</div></div>

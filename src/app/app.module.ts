@@ -13,6 +13,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GameComponent } from './game/game.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor-basic-auth.service';
+import { SendDataComponent } from './transfer/send-data/send-data.component';
+import { ReceiveDataComponent } from './transfer/receive-data/receive-data.component';
 
 
 
@@ -26,6 +28,8 @@ import { HttpInterceptorBasicAuthService } from './service/http/http-interceptor
     MenuComponent,
     LogoutComponent,
     GameComponent,
+    SendDataComponent,
+    ReceiveDataComponent,
   ],
   imports: [
     BrowserModule,

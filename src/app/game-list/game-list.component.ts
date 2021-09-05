@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LoginComponent } from '../login/login.component';
+import { LogoutComponent } from '../logout/logout.component';
 import { GameDataService } from '../service/data/game-data.service';
+import { TransferServiceService } from '../service/data/transfer-service.service';
 
 
 
@@ -21,6 +24,9 @@ export class Game {
 })
 export class GameListComponent implements OnInit {
 
+  
+
+  username = this.transfer.getData()
   selectMsg: string
   message : string
   private currentRow;
@@ -33,7 +39,8 @@ export class GameListComponent implements OnInit {
 
 
   constructor(private gameService : GameDataService,
-    private router : Router) { }
+    private router : Router,
+    private transfer : TransferServiceService) { }
 
   
     ngOnInit() {
@@ -79,8 +86,9 @@ clearMsg() {
 ///////////////////    CRUD OPERATIONS    /////////////////////////
  
   refreshGameList() {
-    this.gameService.retrieveAllGames('Buzzywuzzy87').subscribe(
+    this.gameService.retrieveAllGames(this.username).subscribe(
       response => {
+        console.log(this.username)
         this.rowData = response;        
       }
     )
@@ -90,7 +98,7 @@ clearMsg() {
 
   deleteGame() {
     if(this.currentRow != undefined) {
-      this.gameService.deleteGame('Buzzywuzzy87', this.currentRow.id).subscribe(
+      this.gameService.deleteGame(this.username, this.currentRow.id).subscribe(
         response => {
           this.refreshGameList();
           this.message = `${this.currentRow.name} successfully deleted`;

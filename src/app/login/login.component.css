@@ -1,0 +1,28 @@
+.conker {
+    background-image: url(../images/R.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 300px;
+    margin: 2% 23%;
+}
+
+.loginScreen {
+    margin: 5% 20%;
+}
+
+.btn {
+    width: 200px;
+    height: 60px;
+    margin: 5% 30%;
+}
+
+span {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+h1 {
+    font-size: 45px;
+    font-weight: 900;
+}
